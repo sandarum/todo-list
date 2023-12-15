@@ -1,0 +1,115 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+	display: block;
+}
+
+input,
+button,
+textarea,
+select {
+	font: inherit;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: 'Open Sans', sans-serif;
+}
+
+header {
+  height: 4.5rem;
+  background-color: rgb(61, 65, 76);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header h1{
+  font-family: 'Roboto Slab', serif;
+  color: rgb(255, 255, 255);
+  font-weight: 700;
+}
+
+footer {
+  height: 3.5rem;
+  background-color: rgb(61, 65, 76);
+  color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif,Arial ;
+}
+
+.container {
+  display: flex;
+  flex: 1;
+}
+
+.nav {
+    width: 17rem;
+    background-color: rgb(245, 246, 247);
+    padding: 2rem 1rem;
+}
+
+.nav ul {
+  margin: 0;
+  padding: 0;
+}
+
+.nav li {
+  list-style: none;
+  color: rgb(62, 68, 72);
+  border-bottom: 1px solid rgb(219, 224, 224);
+  padding: 0.5rem 0;
+}
+
+h3 {
+  color: rgb(62, 68, 72);
+  padding: 0.5rem 0;
+  margin-bottom: 1.5rem;
+  font-family: 'Roboto Slab', serif;
+  font-weight: 600;
+}
+
+.nav h3 {
+  display: inline-block;
+  border-bottom: 4px solid rgb(228, 114, 110);
+}
+
+main {
+  padding: 2rem 3rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+main h3 {
+  border-bottom: 4px solid rgb(228, 114, 110);
+}
+
+main ul {
+  margin: 0;
+  padding: 0;
+}
+
+main li {
+  list-style: none;
+  color: rgb(62, 68, 72);
+  padding: 0.5rem 0;
+}
