@@ -1,18 +1,18 @@
 import task from "./task";
 import todoList from "./todo-list";
 import deleteIcon from './delete.svg';
+import { clickDelete, clickAddTaskUI, clickCloseTask, addTask } from "./events";
+
+export function pageLoad(){
+  renderUI();
+  clickDelete();
+  clickAddTaskUI();
+  clickCloseTask();
+}
 
 export function renderUI() {
 
   const myList = new todoList();
-
-  // Add temp tasks
-  myList.addTask(new task('Study'));
-  myList.addTask(new task('Exercise'));
-  myList.addTask(new task('Read'));
-  myList.addTask(new task('Clean'));
-  myList.addTask(new task('Meditate'));
-
   const tasks = myList.getTasks();
   const taskUl = document.querySelector('.taskList');
   taskUl.appendChild(renderTasks(tasks));
@@ -63,16 +63,23 @@ function renderTaskDetails(task, index) {
 function renderAddTaskButton() {
   const element = document.createElement('button');
   element.textContent = 'Add Task';
+  element.classList.add('add-ui-btn');
   return element;
 }
 
-function clearTasksUI() {
+export function clearTasksUI() {
   const taskUl = document.querySelector('.taskList');
   while(taskUl.firstChild) {
     taskUl.removeChild(taskUl.firstChild);
   }
 }
 
-function renderAddTaskUI() {
-  
+export function renderAddTaskUI() {
+  const element = document.querySelector('.model-parent');
+  element.style.display = 'block';
+}
+
+export function closeTaskUI(){
+  const element = document.querySelector('.model-parent');
+  element.style.display = 'none';
 }

@@ -1,5 +1,5 @@
-import { renderUI } from "./page-load";
-import { clickDelete } from "./events";
+import { pageLoad } from "./page-load";
+import { addTask } from "./events";
 
-renderUI();
-clickDelete();
+pageLoad();
+addTask();

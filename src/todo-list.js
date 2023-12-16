@@ -1,17 +1,15 @@
 export default class todoList {
-  constructor() {
-    this.tasks = [];
-  }
+  static tasks = [];
 
   getTasks() {
-    return this.tasks;
+    return todoList.tasks;
   }
 
   addTask(task) {
-    this.tasks.push(task);
+    todoList.tasks.push(task);
   }
 
   removeTask(index) {
-    this.tasks.splice(index,1);
+    todoList.tasks.splice(index,1);
   }
 }
