@@ -16,22 +16,23 @@ export function renderUI() {
   const tasks = myList.getTasks();
   const taskUl = document.querySelector('.taskList');
   taskUl.appendChild(renderTasks(tasks));
+  taskUl.appendChild(renderAddTaskButton());
 }
 
 function renderTasks(taskList) {
 
   const fragment = new DocumentFragment();
 
-  taskList.forEach(task => {
+  taskList.forEach((task, index) => {
     const taskElement = document.createElement('li');
-    taskElement.appendChild(renderTaskDetails(task));
+    taskElement.appendChild(renderTaskDetails(task, index));
     fragment.appendChild(taskElement);
   });
 
   return fragment;
 }
 
-function renderTaskDetails(task) {
+function renderTaskDetails(task, index) {
 
   const element = document.createElement('div');
   const checkBox = document.createElement('input')
@@ -42,10 +43,14 @@ function renderTaskDetails(task) {
 
   const deleteBtn = new Image();
   deleteBtn.src = deleteIcon;
+  deleteBtn.classList.add('delete');
 
   checkBox.checked = task.getTaskInfo().isCompleted;
   title.textContent = task.getTaskInfo().title;
   date.textContent = task.getTaskInfo().dueDate;
+
+  checkBox.dataset.index = index;
+  deleteBtn.dataset.index = index;
 
   element.appendChild(checkBox);
   element.appendChild(title);
@@ -53,5 +58,21 @@ function renderTaskDetails(task) {
   element.appendChild(deleteBtn);
 
   return element;
+}
 
+function renderAddTaskButton() {
+  const element = document.createElement('button');
+  element.textContent = 'Add Task';
+  return element;
+}
+
+function clearTasksUI() {
+  const taskUl = document.querySelector('.taskList');
+  while(taskUl.firstChild) {
+    taskUl.removeChild(taskUl.firstChild);
+  }
+}
+
+function renderAddTaskUI() {
+  
 }

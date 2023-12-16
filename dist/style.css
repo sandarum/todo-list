@@ -113,7 +113,7 @@ main li {
   list-style: none;
   color: rgb(62, 68, 72);
   padding: 0.5rem 0;
-  border-bottom: 1px solid gold;
+  border-bottom: 1px solid rgb(219, 224, 224);
 }
 
 .task {
@@ -124,18 +124,68 @@ main li {
 
 .task > p:first-of-type {
   flex-basis: 50%;
-  color: rebeccapurple;
+  color: rgb(127, 136, 143);
 }
 
 .task > p:last-of-type {
   text-align: right;
   flex-basis: 20%;
-  color: blue;
+  color: rgb(127, 136, 143);
 }
 
 .task > img {
-  background-image: url(../src/delete.svg);
-  /* padding: 0;
-  height: 1rem;
-  font-size: 0.7rem; */
+  height: 20px;
+}
+
+.model-parent {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(0.2rem);
+  display: none;
+}
+
+.model {
+  width: clamp(45ch,35%, 75ch);
+  background-color: rgb(234, 235, 236);
+  padding: 1rem 2rem 1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 0.5rem;
+  position: relative;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.model h3 {
+  border-bottom: 4px solid rgb(228, 114, 110);
+  margin-bottom: 1rem;
+  align-self: flex-start;
+}
+
+.input-container {
+  width: 25rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.input-container :nth-child(2){
+  flex-basis: 14rem;
+}
+
+.input-container:last-of-type{
+  margin-top: 0.6rem;
+}
+
+.close-icon {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-weight: 400;
 }
