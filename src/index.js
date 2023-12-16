@@ -1,1 +1,3 @@
-console.log('Test');
+import { renderUI } from "./page-load";
+
+renderUI();
