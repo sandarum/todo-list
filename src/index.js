@@ -1,5 +1,6 @@
 import { pageLoad } from "./page-load";
-import { addTask } from "./events";
+import { addTask, updateTask } from "./events";
 
 pageLoad();
 addTask();
+updateTask();

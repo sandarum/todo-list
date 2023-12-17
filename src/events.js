@@ -1,4 +1,4 @@
-import { handleCloseUI, handleDelete, handleAddTaskUI, handleAddTask, handleTaskStatus, handleView, handleCloseViewUI } from "./event-handle";
+import { handleCloseUI, handleDelete, handleAddTaskUI, handleAddTask, handleTaskStatus, handleView, handleCloseViewUI, handleEdit, handleCloseEditUI, handleUpdateTask } from "./event-handle";
 
 export function clickDelete(){
   const deleteButtons = document.querySelectorAll('.delete');
@@ -13,8 +13,17 @@ export function clickView(){
   const viewButtons = document.querySelectorAll('.viewBtn');
   viewButtons.forEach( button => {
     button.addEventListener('click',()=> {
-      console.log(button.dataset.index);
       handleView(button.dataset.index);
+    });
+  });
+}
+
+export function clickEdit(){
+  const editButtons = document.querySelectorAll('.editBtn');
+  editButtons.forEach( button => {
+    button.addEventListener('click',()=> {
+      console.log(button.dataset.index);
+      handleEdit(button.dataset.index);
     });
   });
 }
@@ -46,6 +55,17 @@ export function clickCloseView(){
   })
 }
 
+export function clickCloseEdit(){
+  const closeButton = document.querySelector('.edit-close-icon');
+  closeButton.addEventListener('click',handleCloseEditUI);
+  const modelParent = document.querySelector('.edit-model-parent');
+  modelParent.addEventListener('click', (e)=> {
+    if(e.target.className === 'edit-model-parent'){
+      handleCloseEditUI();
+    }
+  })
+}
+
 export function addTask(){
   const addButton = document.querySelector('.add-btn');
   const title = document.querySelector('#title');
@@ -57,7 +77,21 @@ export function addTask(){
     e.preventDefault();
     handleAddTask(title.value, description.value, dueDate.value);
     taskForm.reset();
-    console.log('EVENT');
+  });
+}
+
+export function updateTask(){
+  const updateButton = document.querySelector('.edit-btn');
+  const title = document.querySelector('#edit-title');
+  const description = document.querySelector('#edit-description');
+  const dueDate = document.querySelector('#edit-due-date');
+  const index = document.querySelector('.index');
+  const taskForm = document.querySelector('#edit-form');
+
+  updateButton.addEventListener('click',(e) => {
+    e.preventDefault();
+    handleUpdateTask(title.value, description.value, dueDate.value, index.textContent);
+    taskForm.reset();
   });
 }
 

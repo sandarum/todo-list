@@ -19,4 +19,10 @@ export default class task {
     this.isCompleted = status;
   }
 
+  updateTaskDetails(title, description, dueDate){
+    this.title = title;
+    this.description = description;
+    this.dueDate = dueDate;
+  }
+
 }

@@ -2,7 +2,8 @@ import task from "./task";
 import todoList from "./todo-list";
 import deleteIcon from './delete.svg';
 import viewIcon from './view.svg'
-import { clickDelete, clickAddTaskUI, clickCloseTask, updateTaskStatus, clickView, clickCloseView } from "./events";
+import editIcon from './edit.svg'
+import { clickDelete, clickAddTaskUI, clickCloseTask, updateTaskStatus, clickView, clickCloseView, clickEdit, clickCloseEdit } from "./events";
 
 export function pageLoad(){
   renderUI();
@@ -12,6 +13,8 @@ export function pageLoad(){
   updateTaskStatus();
   clickView();
   clickCloseView();
+  clickEdit();
+  clickCloseEdit();
 }
 
 export function renderUI() {
@@ -53,6 +56,10 @@ function renderTaskDetails(task, index) {
   viewBtn.src = viewIcon;
   viewBtn.classList.add('viewBtn');
 
+  const editBtn = new Image();
+  editBtn.src = editIcon;
+  editBtn.classList.add('editBtn');
+
   const status = task.getTaskInfo().isCompleted;
 
   checkBox.checked = status;
@@ -68,11 +75,13 @@ function renderTaskDetails(task, index) {
   checkBox.dataset.index = index;
   deleteBtn.dataset.index = index;
   viewBtn.dataset.index = index;
+  editBtn.dataset.index = index;
 
   element.appendChild(checkBox);
   element.appendChild(title);
   element.appendChild(date);
   element.appendChild(viewBtn);
+  element.appendChild(editBtn);
   element.appendChild(deleteBtn);
 
   return element;
@@ -102,8 +111,13 @@ export function closeTaskUI(){
   element.style.display = 'none';
 }
 
-export function closeViewsUI(){
+export function closeViewUI(){
   const element = document.querySelector('.task-details-model-parent');
+  element.style.display = 'none';
+}
+
+export function closeEditUI(){
+  const element = document.querySelector('.edit-model-parent');
   element.style.display = 'none';
 }
 
@@ -129,4 +143,19 @@ export function renderViewModel(title, description, dueDate, status){
 
   element.style.display = 'block';
 
+}
+
+export function renderEditModel(title, description, dueDate, index ){
+  const titleElement = document.querySelector('#edit-title');
+  const descriptionElement = document.querySelector('#edit-description');
+  const dueDateElement = document.querySelector('#edit-due-date');
+  const indexElement = document.querySelector('.index');
+  const element = document.querySelector('.edit-model-parent');
+
+  titleElement.value = title;
+  descriptionElement.value = description;
+  dueDateElement.value = dueDate;
+  indexElement.textContent = index;
+
+  element.style.display = 'block';
 }
