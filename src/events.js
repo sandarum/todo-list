@@ -1,4 +1,4 @@
-import { handleCloseUI, handleDelete, handleAddTaskUI, handleAddTask } from "./event-handle";
+import { handleCloseUI, handleDelete, handleAddTaskUI, handleAddTask, handleTaskStatus } from "./event-handle";
 
 export function clickDelete(){
   const deleteButtons = document.querySelectorAll('.delete');
@@ -38,4 +38,15 @@ export function addTask(){
     taskForm.reset();
     console.log('EVENT');
   });
+}
+
+export function updateTaskStatus(){
+  const checkBoxes = document.querySelectorAll('.status');
+  if( checkBoxes !== null){
+    checkBoxes.forEach(checkBox => {
+      checkBox.addEventListener('change', ()=> {
+        handleTaskStatus(checkBox.checked, checkBox.dataset.index);
+      });
+    });
+  }
 }

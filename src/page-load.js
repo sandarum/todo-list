@@ -1,13 +1,14 @@
 import task from "./task";
 import todoList from "./todo-list";
 import deleteIcon from './delete.svg';
-import { clickDelete, clickAddTaskUI, clickCloseTask, addTask } from "./events";
+import { clickDelete, clickAddTaskUI, clickCloseTask, updateTaskStatus } from "./events";
 
 export function pageLoad(){
   renderUI();
   clickDelete();
   clickAddTaskUI();
   clickCloseTask();
+  updateTaskStatus();
 }
 
 export function renderUI() {
@@ -45,10 +46,18 @@ function renderTaskDetails(task, index) {
   deleteBtn.src = deleteIcon;
   deleteBtn.classList.add('delete');
 
-  checkBox.checked = task.getTaskInfo().isCompleted;
+  const status = task.getTaskInfo().isCompleted;
+
+  checkBox.checked = status;
   title.textContent = task.getTaskInfo().title;
   date.textContent = task.getTaskInfo().dueDate;
 
+  checkBox.classList.add('status');
+  status === true ? title.classList.add('completed'): title.classList.remove("completed");
+  status === true ? date.classList.add('completed'): date.classList.remove("completed");
+
+  title.dataset.index = index;
+  date.dataset.index = index;
   checkBox.dataset.index = index;
   deleteBtn.dataset.index = index;
 
@@ -62,7 +71,7 @@ function renderTaskDetails(task, index) {
 
 function renderAddTaskButton() {
   const element = document.createElement('button');
-  element.textContent = 'Add Task';
+  element.textContent = `＋   Add Task`;
   element.classList.add('add-ui-btn');
   return element;
 }
@@ -82,4 +91,12 @@ export function renderAddTaskUI() {
 export function closeTaskUI(){
   const element = document.querySelector('.model-parent');
   element.style.display = 'none';
+}
+
+export function renderTaskCompletionStyle(status, index){
+  const selector = `p[data-index="${index}"]`;
+  const elements = document.querySelectorAll(selector);
+  elements.forEach(element => {
+    status === true ? element.classList.add('completed'): element.classList.remove("completed");
+  })
 }

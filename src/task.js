@@ -15,8 +15,8 @@ export default class task {
     }
   }
 
-  completeTask() {
-    this.isCompleted = true;
+  updateTaskStatus(status) {
+    this.isCompleted = status;
   }
 
 }

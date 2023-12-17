@@ -128,7 +128,7 @@ main li {
 }
 
 .task > p:last-of-type {
-  text-align: right;
+  text-align: left;
   flex-basis: 20%;
   color: rgb(127, 136, 143);
 }
@@ -173,6 +173,7 @@ main li {
   width: 25rem;
   display: flex;
   justify-content: space-between;
+  padding: 0.3rem 0;
 }
 
 .input-container :nth-child(2){
@@ -189,4 +190,21 @@ main li {
   right: 1rem;
   font-weight: 400;
   cursor: pointer;
+}
+
+.add-ui-btn {
+  background: none;
+  border: none;
+  padding: 0.5rem 0;
+  color: rgb(127, 136, 143);
+  font-weight: 400;
+}
+
+.status {
+  accent-color: rgb(228, 114, 110);
+}
+
+.completed{
+  text-decoration: line-through;
+  filter: blur(0.8px);
 }
