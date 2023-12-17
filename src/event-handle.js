@@ -1,6 +1,6 @@
 import todoList from "./todo-list";
 import task from "./task";
-import { renderAddTaskUI, closeTaskUI, renderTaskCompletionStyle } from "./page-load";
+import { renderAddTaskUI, closeTaskUI, renderTaskCompletionStyle, renderViewModel, closeViewsUI } from "./page-load";
 import { pageLoad, clearTasksUI } from "./page-load";
 
 export function handleDelete(index) {
@@ -10,12 +10,23 @@ export function handleDelete(index) {
   pageLoad();
 }
 
+export function handleView(index) {
+  const taskList =  new todoList();
+  const taskDetails = taskList.getTasks()[index].getTaskInfo();
+  renderViewModel(taskDetails.title, taskDetails.description, taskDetails.dueDate, taskDetails.isCompleted);
+  console.log(taskDetails);
+}
+
 export function handleAddTaskUI(){
   renderAddTaskUI();
 }
 
 export function handleCloseUI(){
   closeTaskUI();
+}
+
+export function handleCloseViewUI(){
+  closeViewsUI();
 }
 
 export function handleAddTask(title, description, dueDate){

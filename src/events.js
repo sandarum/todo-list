@@ -1,10 +1,20 @@
-import { handleCloseUI, handleDelete, handleAddTaskUI, handleAddTask, handleTaskStatus } from "./event-handle";
+import { handleCloseUI, handleDelete, handleAddTaskUI, handleAddTask, handleTaskStatus, handleView, handleCloseViewUI } from "./event-handle";
 
 export function clickDelete(){
   const deleteButtons = document.querySelectorAll('.delete');
   deleteButtons.forEach( button => {
     button.addEventListener('click',()=> {
       handleDelete(button.dataset.index);
+    });
+  });
+}
+
+export function clickView(){
+  const viewButtons = document.querySelectorAll('.viewBtn');
+  viewButtons.forEach( button => {
+    button.addEventListener('click',()=> {
+      console.log(button.dataset.index);
+      handleView(button.dataset.index);
     });
   });
 }
@@ -21,6 +31,17 @@ export function clickCloseTask(){
   modelParent.addEventListener('click', (e)=> {
     if(e.target.className === 'model-parent'){
       handleCloseUI();
+    }
+  })
+}
+
+export function clickCloseView(){
+  const closeButton = document.querySelector('.view-close-icon');
+  closeButton.addEventListener('click',handleCloseViewUI);
+  const modelParent = document.querySelector('.task-details-model-parent');
+  modelParent.addEventListener('click', (e)=> {
+    if(e.target.className === 'task-details-model-parent'){
+      handleCloseViewUI();
     }
   })
 }

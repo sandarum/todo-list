@@ -208,3 +208,54 @@ main li {
   text-decoration: line-through;
   filter: blur(0.8px);
 }
+
+.task-details-model-parent{
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  backdrop-filter: blur(0.2rem);
+  display: none;
+}
+
+.task-details-model{
+  width: clamp(45ch,35%, 75ch);
+  background-color: rgb(234, 235, 236);
+  padding: 1rem 2rem 1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 0.5rem;
+  position: relative;
+  font-family: 'Open Sans', sans-serif;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.task-details-model h3 {
+  border-bottom: 4px solid rgb(228, 114, 110);
+  margin-bottom: 1rem;
+  align-self: flex-start;
+}
+
+.view-container {
+  width: 25rem;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.3rem 0;
+}
+
+.view-container :nth-child(2){
+  flex-basis: 10rem;
+}
+
+.view-close-icon {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-weight: 400;
+  cursor: pointer;
+}
