@@ -47,7 +47,8 @@ export function handleAddTask(title, description, dueDate){
 
 export function handleUpdateTask(title, description, dueDate, index){
   const taskList =  new todoList();
-  taskList.getTasks()[index].updateTaskDetails(title, description, dueDate);
+  const task = taskList.getTasks()[index];
+  dueDate === "" ? task.updateTaskDetails(title, description ): task.updateTaskDetails(title, description, dueDate);
   closeEditUI();
   clearTasksUI();
   pageLoad();

@@ -19,7 +19,7 @@ export default class task {
     this.isCompleted = status;
   }
 
-  updateTaskDetails(title, description, dueDate){
+  updateTaskDetails(title, description, dueDate = "No Due Date"){
     this.title = title;
     this.description = description;
     this.dueDate = dueDate;
